@@ -3,13 +3,13 @@ import sys
 
 #argparse help us to command line argument 
 parser = ArgumentParser(
-						description ="sum of the combined number(like:1234) in string or int",
-						epilog ='''
-								py combinumber.py -v 1234
-										 or 
-								py combinumber.py -i 1234
-								'''
-						)
+			description ="sum of the combined number(like:1234) in string or int",
+			epilog ='''
+				 py combinumber.py -v 1234
+					 or 
+				py combinumber.py -i 1234
+				'''
+			)
 rparser = parser.add_argument_group("Required options")
 rparser.add_argument('-v','--value',type=str,dest='value2',help='Enter the value')
 rparser.add_argument('-i','--intergers',type=int,dest='value1',help='Enter the value')
