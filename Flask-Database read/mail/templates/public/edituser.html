@@ -18,7 +18,7 @@ Delete
 <div class="container">
 	<div class="row">
 		<div class="col">
-			{% with messages = get_flashed_messages(with_categories=true) %}
+		{% with messages = get_flashed_messages(with_categories=true) %}
                   {% if messages %}
                     <div class="alert alert-{{ messages.0.0 }}" role="alert">
                       {% for category, message in messages %}
@@ -28,8 +28,8 @@ Delete
                   {% endif %}
                 {% endwith %}
                 
-			<h1>DB-Update </h1><hr>
-			<form method="post" class="control-group">
+		<h1>DB-Update </h1><hr>
+		<form method="post" class="control-group">
                 {{ form.hidden_tag() }}
                 {{ wtf.form_field(form.user,value=users.username | default(user,true)) }}
                 {{ wtf.form_field(form.pwd,value=users.password | default(user,true),type='password') }}
@@ -40,10 +40,8 @@ Delete
                 {% else  %}
                 {{ wtf.form_field(form.delete ,class="btn btn-danger active") }}
                 {% endif %}
-
-            </form>
-            <p></p>
-            <a href="/db/all"><input type="submit" value="Back " class="text-md-left btn btn-info"></a>
+		</form>
+            	<a href="/db/all"><input type="submit" value="Back " class="text-md-left btn btn-info"></a>
 		</div>
 	</div>
 </div>
