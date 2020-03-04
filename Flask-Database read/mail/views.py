@@ -1,8 +1,8 @@
 import os
 from mail import app
 from flask_nav import Nav
+from flask_wtf import Form
 from flask_bootstrap import Bootstrap
-from flask_wtf import Form, RecaptchaField
 from flask_sqlalchemy import SQLAlchemy
 from flask import redirect, url_for, request, render_template, flash, session
 from wtforms import StringField, PasswordField, SubmitField
@@ -16,7 +16,6 @@ bootstrap = Bootstrap(app)
 login_manager = LoginManager()
 
 login_manager.login_view = 'index'
-# login_manager.login_message = 'Please log in'
 login_manager.init_app(app)
 
 nav = Nav()
@@ -42,8 +41,7 @@ basedir = os.path.abspath('')
 app.config['SECRET_KEY']='Thisissceretkey'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///'+os.path.join(basedir,'login.db')
 app.config['SQLALCHEMY_TRACK_MODIFICATION'] = False
-app.config['RECAPTCHA_PUBLIC_KEY'] = '6LdwnNoUAAAAACx9CZE1xVuhXq4WmUhPpiX8XIiR'
-app.config['RECAPTCHA_PRIVATE_KEY'] = '6LdwnNoUAAAAAJ7xoTPV8fYpyZzTk5Xaioba-P2C'
+
 
 db = SQLAlchemy(app)
 
@@ -59,7 +57,7 @@ class User(UserMixin, db.Model):
 class LoginForm(Form):
     username = StringField('username', validators=[InputRequired('Username is Required'),Length(min=8,max=15,message='Must be between 8 to 12 characters')])
     password = PasswordField('password', validators=[DataRequired('Password is Required'),Length(min=8,max=15,message='Password required atleast 8 to 12 characters ')])
-    recaptcha = RecaptchaField()
+    recaptcha =RecaptchaField()
     submit = SubmitField("Login")
 
 class SignUp(Form):
