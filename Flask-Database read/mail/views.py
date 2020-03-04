@@ -57,7 +57,6 @@ class User(UserMixin, db.Model):
 class LoginForm(Form):
     username = StringField('username', validators=[InputRequired('Username is Required'),Length(min=8,max=15,message='Must be between 8 to 12 characters')])
     password = PasswordField('password', validators=[DataRequired('Password is Required'),Length(min=8,max=15,message='Password required atleast 8 to 12 characters ')])
-    recaptcha =RecaptchaField()
     submit = SubmitField("Login")
 
 class SignUp(Form):
